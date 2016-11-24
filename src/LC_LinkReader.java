@@ -26,13 +26,9 @@ public class LC_LinkReader {
     static List<String> lc_lst = new ArrayList<String>();
     static List<String> link_lst = new ArrayList<String>();
     //give the path of the LC file
-    public static void main(String [] args){
 
-        readLC();
-        readSQL();
-    }
 
-    private static void readSQL() {
+    public static void readSQL() {
         BufferedReader reader = null;
         BufferedReader reader1 = null;
         boolean flag = true;
@@ -99,6 +95,7 @@ public class LC_LinkReader {
             }
             //close reader
             reader.close();
+
             LinkScoreController.addLink(link_lst);
 
         } catch (FileNotFoundException e) {
@@ -108,7 +105,7 @@ public class LC_LinkReader {
         }
     }
 
-    private static void readLC() {
+    public static void readLC() {
 
         BufferedReader reader = null;
         BufferedReader reader1 = null;

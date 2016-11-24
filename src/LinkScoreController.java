@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /*
 * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
@@ -19,10 +18,13 @@ import java.util.List;
 public class LinkScoreController {
 
     static List<String> temp = new ArrayList<String>();
+    public static Map <String, Link> link_map = new HashMap <String, Link>();
 
     public static void addLink(List<String> arr){
         temp = arr;
         processLink(arr);
+
+
 
     }
 
@@ -33,6 +35,14 @@ public class LinkScoreController {
             //getProduct(arr.get(i));
             //create object
             Link link = new Link(arr.get(i), getProduct(arr.get(i)));
+            //if in map update
+            //if not in map create
+            if(link_map.containsKey(link.getUrl())){
+                link_map.get(link.getUrl()).setScore();
+
+            } else {
+                link_map.put(link.getUrl(), link);
+            }
 
 
         }

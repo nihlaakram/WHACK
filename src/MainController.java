@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.Map;
+
 /*
 * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
@@ -13,36 +16,17 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-public class Link {
+public class MainController {
+    public static void main(String [] args){
 
-
-    private String url;
-
-    public void setScore() {
-        this.score += 5;
-    }
-
-    private int score;
-    private Enum product;
-
-    public Enum getProduct() {
-        return product;
-    }
-
-
-    public String getUrl() {
-        return url;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-
-
-    public Link(String url, Enum product) {
-        this.url = url;
-        this.score = 5;
-        this.product = product;
+        LC_LinkReader.readLC();
+        LC_LinkReader.readSQL();
+        Iterator it = LinkScoreController.link_map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            Link link =  (Link) pair.getValue();
+            System.out.println(pair.getKey() + " = " +link.getScore() + " = " +link.getProduct());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
     }
 }
