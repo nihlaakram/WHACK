@@ -24,6 +24,7 @@ import java.util.Scanner;
 public class LC_LinkReader {
 
     static List<String> lc_lst = new ArrayList<String>();
+    static List<String> link_lst = new ArrayList<String>();
     //give the path of the LC file
     public static void main(String [] args){
 
@@ -83,7 +84,10 @@ public class LC_LinkReader {
 
                     if (index == 8 && flag2) {
 
-                        System.out.print(lc_lst.get(compIndex)+"\t"+data+"\n");
+                        //System.out.print(lc_lst.get(compIndex)+"\t"+data+"\n");
+                        link_lst.add(data);
+                        //Pass to controller
+
                     }
 
                     index++;
@@ -95,6 +99,7 @@ public class LC_LinkReader {
             }
             //close reader
             reader.close();
+            LinkScoreController.addLink(link_lst);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
