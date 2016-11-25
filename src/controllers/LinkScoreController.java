@@ -58,6 +58,21 @@ public class LinkScoreController {
         if(link.contains("application-server")){
             return Product.AS;
         }
+        if(link.contains("api")){
+            return Product.APIM;
+        }
+        if(link.contains("esb")){
+            return Product.ESB;
+        }
+        if(link.contains("stratos")){
+            return Product.Stratos;
+        }
+        if(link.contains("identity-server")){
+            return Product.IS;
+        }
+        if(link.contains("carbon")){
+            return Product.Carbon;
+        }
 
         return Product.Other;
     }

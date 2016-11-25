@@ -16,5 +16,5 @@ package entity;
 * limitations under the License.
 */
 public enum Product {
-    DAS,APIM,CEP,ESB,IOT,MB,EMM,GREG,IS,ML,AS,MSF4J,BPS,DSS,Dev_Studio,Carbon,Other
+    DAS,APIM,CEP,ESB,IOT,MB,EMM,GREG,IS,ML,AS,MSF4J,BPS,DSS,Dev_Studio,Carbon,Stratos,Other
 }
