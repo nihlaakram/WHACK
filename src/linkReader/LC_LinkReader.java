@@ -35,9 +35,9 @@ public class LC_LinkReader extends AbstractLinkReader{
         BufferedReader reader;
         BufferedReader reader1;
         try {
-            reader = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/SQL_PageVisit_Report_2015.csv"));
+            reader = new BufferedReader(new FileReader("/home/amjadh/Downloads/rawData/SQL_PageVisit_Report_2015.csv"));
             LinkScoreController.addLink(read(lc_lst,reader));
-            reader1 = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/RL_PageVisit_Report_2015.csv"));
+            reader1 = new BufferedReader(new FileReader("/home/amjadh/Downloads/rawData/RL_PageVisit_Report_2015.csv"));
             LinkScoreController.addLink(read(lc_lst,reader1));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class LC_LinkReader extends AbstractLinkReader{
         BufferedReader reader1 = null;
         boolean flag = true;
         try {
-            reader = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/lifeTime.csv"));
+            reader = new BufferedReader(new FileReader("/home/amjadh/Downloads/rawData/lifeTime.csv"));
 
             // read file line by line
             String line = null;

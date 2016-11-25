@@ -19,9 +19,7 @@ public class SQL_LinkReader extends AbstractLinkReader{
 		BufferedReader reader;
 		BufferedReader reader1;
 		try {
-			reader = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/SQL_PageVisit_Report_2015.csv"));
-			LinkScoreController.addLink(read(sql_lst,reader));
-			reader1 = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/RL_PageVisit_Report_2015.csv"));
+			reader1 = new BufferedReader(new FileReader("/home/amjadh/Downloads/rawData/RL_PageVisit_Report_2015.csv"));
 			LinkScoreController.addLink(read(sql_lst,reader1));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -34,7 +32,7 @@ public class SQL_LinkReader extends AbstractLinkReader{
 		BufferedReader reader1 = null;
 		boolean flag = true;
 		try {
-			reader = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/3 years of funnel data_SQL_20150901.csv"));
+			reader = new BufferedReader(new FileReader("/home/amjadh/Downloads/rawData/3_years_of_funnel_data_SQL_20150901.csv"));
 
 			// read file line by line
 			String line = null;
