@@ -1,3 +1,10 @@
+package controllers;
+
+import entity.Link;
+import linkReader.BANT_LinkReader;
+import linkReader.LC_LinkReader;
+import linkReader.SQL_LinkReader;
+
 import java.util.Iterator;
 import java.util.Map;
 
@@ -20,7 +27,11 @@ public class MainController {
     public static void main(String [] args){
 
         LC_LinkReader.readLC();
-        LC_LinkReader.readSQL();
+        LC_LinkReader.readPageVisit();
+        BANT_LinkReader.readBANT();
+        BANT_LinkReader.readPageVisit();
+        SQL_LinkReader.readSQL();
+        SQL_LinkReader.readPageVisit();
         Iterator it = LinkScoreController.link_map.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();

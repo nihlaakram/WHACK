@@ -1,3 +1,7 @@
+package linkReader;
+
+import controllers.LinkScoreController;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,86 +25,21 @@ import java.util.Scanner;
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-public class LC_LinkReader {
+public class LC_LinkReader extends AbstractLinkReader{
 
     static List<String> lc_lst = new ArrayList<String>();
-    static List<String> link_lst = new ArrayList<String>();
     //give the path of the LC file
 
 
-    public static void readSQL() {
-        BufferedReader reader = null;
-        BufferedReader reader1 = null;
-        boolean flag = true;
+    public static void readPageVisit() {
+        BufferedReader reader;
+        BufferedReader reader1;
         try {
             reader = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/SQL_PageVisit_Report_2015.csv"));
-
-            // read file line by line
-            String line = null;
-            Scanner scanner = null;
-
-
-            int index = 0;
-            double sum = 0;
-            boolean flag2 = false;
-            int compIndex = 0;
-            while ((line = reader.readLine()) != null) {
-
-
-                scanner = new Scanner(line);
-                scanner.useDelimiter(",");
-
-                if(flag){
-                    scanner.nextLine();
-                    flag = false;
-                }
-
-                while (scanner.hasNext()) {
-
-                    String data = scanner.next();
-                    if(data.equals("")){
-                        break;
-                    }
-                    if(index==4){
-
-                        for(int i=0; i<lc_lst.size(); i++){
-                            //System.out.println(data+"\t"+lc_lst.get(i));
-                            if(data.equals(lc_lst.get(i))){
-                                //System.out.println("-------------");
-                                flag2 =true;
-                                compIndex = i;
-                                break;
-                            } else {
-                                flag2 = false;
-                            }
-
-                        }
-                    }
-
-
-                    if (index == 8 && flag2) {
-
-                        //System.out.print(lc_lst.get(compIndex)+"\t"+data+"\n");
-                        link_lst.add(data);
-                        //Pass to controller
-
-                    }
-
-                    index++;
-
-                }
-                index = 0;
-
-                //inputHandler.send(new Object[]{windspeed});
-            }
-            //close reader
-            reader.close();
-
-            LinkScoreController.addLink(link_lst);
-
+            LinkScoreController.addLink(read(lc_lst,reader));
+            reader1 = new BufferedReader(new FileReader("/home/fathima/WHACK/rawData/RL_PageVisit_Report_2015.csv"));
+            LinkScoreController.addLink(read(lc_lst,reader1));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }

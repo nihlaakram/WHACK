@@ -1,3 +1,5 @@
+package entity;
+
 /*
 * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
@@ -13,6 +15,36 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-public enum Product {
-    DAS,APIM,CEP,ESB,IOT,MB,EMM,GREG,IS,ML,AS,MSF4J,BPS,DSS,Dev_Studio,Carbon,Other
+public class Link {
+
+
+    private String url;
+
+    public void setScore() {
+        this.score += 5;
+    }
+
+    private int score;
+    private Enum product;
+
+    public Enum getProduct() {
+        return product;
+    }
+
+
+    public String getUrl() {
+        return url;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+
+
+    public Link(String url, Enum product) {
+        this.url = url;
+        this.score = 5;
+        this.product = product;
+    }
 }
